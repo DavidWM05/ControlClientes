@@ -1,7 +1,6 @@
 package mx.com.luvid.web;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -64,7 +63,7 @@ public class ServletController extends HttpServlet {
         Cliente cliente = new Cliente(nombre, apellido, email, telefono, saldo);
         
         int registrosModificados = new ClienteDAO().insert(cliente);        
-        //System.out.println("Registros modificados = "+ registrosModificados);
+        System.out.println("Registros modificados = "+ registrosModificados);
         
         this.accionDefault(request, response);
     }
