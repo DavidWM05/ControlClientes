@@ -17,15 +17,18 @@ public class ConnectionDB {
     private static final String JDBC_URL="jdbc:mysql://localhost:3306/control_clientes?useSSL=false&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true";
     private static final String JDBC_USER="root";
     private static final String JDBC_PASSWORD = "12345";
+    private static BasicDataSource dataSource;
     
     public static DataSource getDataSource(){
-        BasicDataSource ds = new BasicDataSource();
-        ds.setUrl(JDBC_URL);
-        ds.setUsername(JDBC_USER);
-        ds.setPassword(JDBC_PASSWORD);
-        ds.setInitialSize(50);
+        if(dataSource == null){
+            dataSource = new BasicDataSource();
+            dataSource.setUrl(JDBC_URL);
+            dataSource.setUsername(JDBC_USER);
+            dataSource.setPassword(JDBC_PASSWORD);
+            dataSource.setInitialSize(50);
+        }        
         
-        return ds;
+        return dataSource;
     }
     
     public static Connection getConnection() throws SQLException{
